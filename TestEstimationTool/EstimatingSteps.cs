@@ -1,33 +1,39 @@
 ﻿using System;
 using TechTalk.SpecFlow;
+using EstimationLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestEstimationTool
 {
     [Binding]
     public class EstimatingSteps
     {
-        [Given(@"I have entered a current estimate of (.*) hours")]
-        public void GivenIHaveEnteredACurrentEstimateOfHours(int p0)
+		private DevelopmentTask _task = new DevelopmentTask();
+		int result = 0;
+
+		[Given(@"I have entered a current estimate of (.*) hours")]
+        public void GivenIHaveEnteredACurrentEstimateOfHours(int hours)
         {
-            ScenarioContext.Current.Pending();
+			_task.CurrentEstimate = TimeSpan.FromHours(hours);
         }
         
         [Given(@"I have entered (.*) hours as time taken")]
-        public void GivenIHaveEnteredHoursAsTimeTaken(int p0)
+        public void GivenIHaveEnteredHoursAsTimeTaken(int hours)
         {
-            ScenarioContext.Current.Pending();
-        }
-        
-        [When(@"I calculate remaining time")]
+			_task.TimeSpent = TimeSpan.FromHours(hours);
+		}
+
+		[When(@"I calculate remaining time")]
         public void WhenICalculateRemainingTime()
         {
-            ScenarioContext.Current.Pending();
+			result = _task.CalculateRemaining();
         }
         
-        [Then(@"the result should be (.*) hour")]
-        public void ThenTheResultShouldBeHour(int p0)
-        {
-            ScenarioContext.Current.Pending();
-        }
-    }
+		[Then(@"the result should be (.*) hour\(s\)")]
+		public void ThenTheResultShouldBeHourS(int hours)
+		{
+			Assert.AreEqual(hours, result);
+		}
+
+	}
 }
