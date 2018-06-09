@@ -74,6 +74,12 @@
       <LastGenOutput>Estimating.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EstimationLibrary\EstimationLibrary.csproj">
+      <Project>{a5d8ae19-0d5f-4f54-a5ef-1135ac07659f}</Project>
+      <Name>EstimationLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
