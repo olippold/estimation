@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EstimationLibrary
 {
 	public class DevelopmentTask
-	{
+	{		
 		public TimeSpan CurrentEstimate { get; set; }
 		public TimeSpan TimeSpent { get; set; }
 
